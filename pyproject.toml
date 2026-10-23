@@ -3,6 +3,7 @@ name = "qenc"
 version = "1.0.0"
 description = "Reproduction code for 'How Quantum Data Encoding Constrains Representation Learning'"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.12,<3.14"
 # The versions that produced the archived results.
 dependencies = [

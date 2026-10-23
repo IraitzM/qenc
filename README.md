@@ -13,6 +13,8 @@ Every simulation is noiseless and uses exact expectation values.
 The project uses [uv](https://docs.astral.sh/uv/) and Python 3.12.
 
 ```bash
+git clone https://github.com/IraitzM/qenc
+cd qenc
 uv sync
 ```
 
@@ -121,6 +123,15 @@ separately [archive DOI]. Placed under `results/` with the names below, they let
 | `representation-bottlenecks/planted-v2/<job>` | `planted/<job>` |
 | `programme/phase1/<job>`, `programme/phase1-diagnostics/ntk_norm.csv` | `regime-map/<job>`, `regime-map/ntk_norm.csv` |
 | `qnn-rankdesign/table_init_sensitivity_final_crz.csv` | `rank/fits.csv` |
+
+## Citation
+
+If you use this code, please cite the article. `CITATION.cff` holds the reference, which will be completed once
+the article is published.
+
+## Licence
+
+MIT, see `LICENSE`.
 
 ## Acknowledgements
 

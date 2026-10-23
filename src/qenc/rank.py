@@ -1,8 +1,8 @@
 """Controlled-rank regressions with a two-qubit entangler ladder (SI Section S10).
 
 A two-qubit circuit re-uploads x on wire 0 and y on wire 1; ``k`` CRZ entanglers
-placed in interior layers raise the rank of the 2-D Fourier coefficient matrix it
-can reach, min(2L + 1, 4 * 3**(k - 1)), while the frequency support stays the
+placed in interior layers raise the rank of its 2-D Fourier coefficient matrix, at
+most min(2L + 1, 4**k + 1) with the bias, while the frequency support stays the
 (2L + 1)^2 box. Targets of exact rank and fixed bandwidth isolate rank from bandwidth.
 """
 from __future__ import annotations
@@ -13,8 +13,9 @@ import torch
 from torch import nn
 
 
-def reachable_rank_law(k: int, degree: int) -> int:
-    return int(min(2 * degree + 1, 1 if k == 0 else 4 * 3 ** (k - 1)))
+def rank_bound(k: int, degree: int) -> int:
+    """Each CRZ at most doubles the product terms of the state, so <Z0 Z1> has at most 4**k and the bias adds one."""
+    return min(2 * degree + 1, 4 ** k + 1)
 
 
 def recommended_placement(k: int, degree: int) -> tuple[int, ...]:
@@ -74,10 +75,10 @@ def separable_plus_const_r2(img: np.ndarray, n_coarse: int = 401, n_fine: int = 
 
 
 def model_ceiling_r2(target: np.ndarray, k: int, degree: int) -> float:
-    """Separable-plus-constant ceiling at k = 0; truncated SVD at the model's rank (law + 1 for the bias) above."""
+    """Separable-plus-constant ceiling at k = 0; truncated SVD at ``rank_bound`` above."""
     if k == 0:
         return separable_plus_const_r2(target)
-    return truncated_svd_r2(target, int(min(reachable_rank_law(k, degree) + 1, 2 * degree + 1)))
+    return truncated_svd_r2(target, rank_bound(k, degree))
 
 
 class EntanglerLadder(nn.Module):
