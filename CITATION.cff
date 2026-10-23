@@ -15,11 +15,11 @@ authors:
   - family-names: "Combarro"
     given-names: "Elías F."
     affiliation: "University of Oviedo"
-# Placeholder until the results archive has a DOI:
+# Placeholder until a release of this repository is archived with a DOI (for example through Zenodo):
 # identifiers:
 #   - type: doi
-#     value: "ARCHIVE_DOI"
-#     description: "Per-seed results, predictions and model checkpoints of the article"
+#     value: "RELEASE_DOI"
+#     description: "Archived release with the code, per-job results and frozen protocols of the article"
 preferred-citation:
   type: article
   # Placeholder until publication: set status to in-press (or remove it) and fill in the fields below.

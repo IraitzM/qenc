@@ -1,0 +1,5 @@
+model,test_bacc
+entangled ansatz + local readout,0.8985745614035088
+entangled ansatz + ZZ readout,0.9091739766081872
+product ansatz + local readout,0.5014619883040936
+product ansatz + ZZ readout,0.9420687134502924

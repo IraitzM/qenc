@@ -1,0 +1,430 @@
+{
+  "protocol": "spatial-qsm-v1",
+  "jobs": {
+    "PneumoniaMNIST": [
+      62,
+      63,
+      64,
+      65,
+      66
+    ],
+    "NoduleMNIST3D": [
+      62,
+      63,
+      64,
+      65,
+      66
+    ],
+    "Mirror2D": [
+      62,
+      63,
+      64
+    ],
+    "Mirror3D": [
+      62,
+      63,
+      64
+    ]
+  },
+  "epochs": 20,
+  "specs": {
+    "PneumoniaMNIST": [
+      {
+        "candidate": "native8",
+        "kind": "qsm",
+        "arm": "native",
+        "grid": [
+          2,
+          4
+        ],
+        "n_qubits": 4,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "raster8",
+        "kind": "qsm",
+        "arm": "raster",
+        "grid": [
+          2,
+          4
+        ],
+        "n_qubits": 4,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "spectrum8",
+        "kind": "qsm",
+        "arm": "spectrum",
+        "grid": [
+          2,
+          4
+        ],
+        "n_qubits": 4,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "amplitude8",
+        "kind": "amplitude",
+        "grid": [
+          2,
+          4
+        ],
+        "n_qubits": 3,
+        "depth": 3,
+        "lr": 0.05,
+        "batch": 32
+      },
+      {
+        "candidate": "native16",
+        "kind": "qsm",
+        "arm": "native",
+        "grid": [
+          4,
+          4
+        ],
+        "n_qubits": 5,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "raster16",
+        "kind": "qsm",
+        "arm": "raster",
+        "grid": [
+          4,
+          4
+        ],
+        "n_qubits": 5,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "spectrum16",
+        "kind": "qsm",
+        "arm": "spectrum",
+        "grid": [
+          4,
+          4
+        ],
+        "n_qubits": 5,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "amplitude16",
+        "kind": "amplitude",
+        "grid": [
+          4,
+          4
+        ],
+        "n_qubits": 4,
+        "depth": 3,
+        "lr": 0.05,
+        "batch": 32
+      },
+      {
+        "candidate": "angle8",
+        "kind": "angle",
+        "grid": [
+          2,
+          4
+        ],
+        "n_qubits": 8,
+        "depth": 4,
+        "lr": 0.05,
+        "batch": 32
+      }
+    ],
+    "NoduleMNIST3D": [
+      {
+        "candidate": "native8",
+        "kind": "qsm",
+        "arm": "native",
+        "grid": [
+          2,
+          2,
+          2
+        ],
+        "n_qubits": 4,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "raster8",
+        "kind": "qsm",
+        "arm": "raster",
+        "grid": [
+          2,
+          2,
+          2
+        ],
+        "n_qubits": 4,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "spectrum8",
+        "kind": "qsm",
+        "arm": "spectrum",
+        "grid": [
+          2,
+          2,
+          2
+        ],
+        "n_qubits": 4,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "amplitude8",
+        "kind": "amplitude",
+        "grid": [
+          2,
+          2,
+          2
+        ],
+        "n_qubits": 3,
+        "depth": 3,
+        "lr": 0.05,
+        "batch": 32
+      },
+      {
+        "candidate": "native64",
+        "kind": "qsm",
+        "arm": "native",
+        "grid": [
+          4,
+          4,
+          4
+        ],
+        "n_qubits": 7,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "raster64",
+        "kind": "qsm",
+        "arm": "raster",
+        "grid": [
+          4,
+          4,
+          4
+        ],
+        "n_qubits": 7,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "spectrum64",
+        "kind": "qsm",
+        "arm": "spectrum",
+        "grid": [
+          4,
+          4,
+          4
+        ],
+        "n_qubits": 7,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "amplitude64",
+        "kind": "amplitude",
+        "grid": [
+          4,
+          4,
+          4
+        ],
+        "n_qubits": 6,
+        "depth": 3,
+        "lr": 0.05,
+        "batch": 32
+      },
+      {
+        "candidate": "angle8",
+        "kind": "angle",
+        "grid": [
+          2,
+          2,
+          2
+        ],
+        "n_qubits": 8,
+        "depth": 4,
+        "lr": 0.05,
+        "batch": 32
+      }
+    ],
+    "Mirror2D": [
+      {
+        "candidate": "native16",
+        "kind": "qsm",
+        "arm": "native",
+        "grid": [
+          4,
+          4
+        ],
+        "n_qubits": 5,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "raster16",
+        "kind": "qsm",
+        "arm": "raster",
+        "grid": [
+          4,
+          4
+        ],
+        "n_qubits": 5,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "spectrum16",
+        "kind": "qsm",
+        "arm": "spectrum",
+        "grid": [
+          4,
+          4
+        ],
+        "n_qubits": 5,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "amplitude16",
+        "kind": "amplitude",
+        "grid": [
+          4,
+          4
+        ],
+        "n_qubits": 4,
+        "depth": 3,
+        "lr": 0.05,
+        "batch": 32
+      },
+      {
+        "candidate": "angle8",
+        "kind": "angle",
+        "grid": [
+          2,
+          4
+        ],
+        "n_qubits": 8,
+        "depth": 4,
+        "lr": 0.05,
+        "batch": 32
+      }
+    ],
+    "Mirror3D": [
+      {
+        "candidate": "native64",
+        "kind": "qsm",
+        "arm": "native",
+        "grid": [
+          4,
+          4,
+          4
+        ],
+        "n_qubits": 7,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "raster64",
+        "kind": "qsm",
+        "arm": "raster",
+        "grid": [
+          4,
+          4,
+          4
+        ],
+        "n_qubits": 7,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "spectrum64",
+        "kind": "qsm",
+        "arm": "spectrum",
+        "grid": [
+          4,
+          4,
+          4
+        ],
+        "n_qubits": 7,
+        "depth": 4,
+        "lr": 0.005,
+        "batch": 32
+      },
+      {
+        "candidate": "amplitude64",
+        "kind": "amplitude",
+        "grid": [
+          4,
+          4,
+          4
+        ],
+        "n_qubits": 6,
+        "depth": 3,
+        "lr": 0.05,
+        "batch": 32
+      },
+      {
+        "candidate": "angle8",
+        "kind": "angle",
+        "grid": [
+          2,
+          2,
+          2
+        ],
+        "n_qubits": 8,
+        "depth": 4,
+        "lr": 0.05,
+        "batch": 32
+      }
+    ]
+  },
+  "hypothesis": "Does native spatial QSM use information beyond normalized singular values, and does finer resolution help?",
+  "geometry": "Columns are overlapping native patches H[a,b]=X[a+b]; windows floor(shape/2). Raster is a matched alternative lift.",
+  "normalization": "Each original example z-scored BEFORE fixed nonoverlapping spatial mean convolution; QSM H/Frobenius norm; amplitude L2 norm.",
+  "qsm": "Four fixed-time uploads, t=2, |0> initial state, existing SU(4) brickwall mixers and local Z + linear readout; zero Hamiltonian padding.",
+  "matched_qsm": "Same qubit register, initialization, optimizer and readout across native/raster/spectrum arms at each resolution.",
+  "spectrum_control": "Keep normalized block eigenvalues, replace eigenvectors by fixed Walsh-Hadamard basis; removes input-dependent subspaces.",
+  "classical_probe": "StandardScaler + RBF SVC, C=1, 11 gamma candidates logspace(-3,3)/dimension; validation chooses gamma. Singular values rounded to 10 decimals.",
+  "learned_feature_probe": "Fixed C=1 standardized logistic regression on initial vs trained local-Z features; round to 10 decimals; no test tuning.",
+  "splits": "Real: 180 fit / 60 val / 120 test, balanced official train/test subsets. Synthetic: 120 fit / 40 val / 160 test, complete twin pairs within splits.",
+  "selection": "Validation balanced accuracy; exact ties by qubits, depth, candidate name; no refit, no epoch selection.",
+  "limitations": "Known benchmark pilot, finite ideal simulation, fixed upload time and patch size; no hardware efficiency or universal encoding claim. Cross-family readouts differ.",
+  "source_sha256": {
+    "experiments/run_spatial_qsm.py": "c8c6eb705ec800094e78259ea7b6582226818923afbe356b7e8ec0dd16b3408c",
+    "code/spatial_qsm.py": "6c86a0425fd7ac4aff7cc94fe7557d8e14ca6ad82352cceb1c0f538059bd75ff",
+    "code/spatial_compression.py": "46a6290c56306b8118f7d364538e1ec1bab6585ceef051d8092e84bda196d9ea",
+    "code/qnn.py": "0e8eb8582260d6f27fc8724412712878fd6087cbaf3be1e8563b77983cf72de5",
+    "code/image_preprocessing.py": "590bc3255375910e0c9607e23bfa325ee56aa13f3b36b7506d4fa01cb0b79c20"
+  },
+  "versions": {
+    "torch": "2.12.1+cu130",
+    "numpy": "2.4.6"
+  }
+}

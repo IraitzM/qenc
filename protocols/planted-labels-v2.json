@@ -1,0 +1,182 @@
+{
+  "protocol": "planted-labels-v2",
+  "status": "Prospective. Predictions fixed before any fit.",
+  "seeds": [
+    80,
+    81,
+    82,
+    83,
+    84
+  ],
+  "splits": {
+    "fit": 800,
+    "val": 100,
+    "test": 300
+  },
+  "cells_function_class": [
+    [
+      "PneumoniaMNIST",
+      8
+    ],
+    [
+      "PneumoniaMNIST",
+      16
+    ],
+    [
+      "NoduleMNIST3D",
+      8
+    ]
+  ],
+  "frequencies": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "labels": {
+    "F2": "1[(a.x)^2 - (b.x)^2 > t], x = z/||z|| on the cell's grid, a, b = principal axes 1-2 of fit x, t = fit median",
+    "F4": "1[((a.x)^2 - (b.x)^2 - t1)((c.x)^2 - (d.x)^2 - t2) > 0], axes 1-4, t1, t2 = fit medians",
+    "Kk": "1[cos(k u) > 0], u ~ U[0, 2pi) independent per example, replacing coarse coordinate 0; same u for every k"
+  },
+  "arms": {
+    "amp1": "AmplitudeEncodingClassifier(d, n_layers=3), one copy, local Z + linear head",
+    "amp2": "AmplitudeReuploadClassifier(d, k=2, n_layers=3), two copies on separate registers",
+    "angle": "AngleEncodingClassifier(8, n_qubits=8, n_reuploads=4, Z and ring ZZ readout)",
+    "*_ceiling": "SVM on the fidelity kernel of the arm's trained final states (ladder L2)",
+    "classical": "best of logistic and RBF-SVM by inner CV on x (F) or the 8 coordinates (K)",
+    "surrogate2": "logistic on all homogeneous degree-2 monomials of x, the explicit single-copy class",
+    "surrogate4": "logistic on all homogeneous degree-4 monomials of x, the explicit two-copy class",
+    "fourierD": "logistic on cos(ju), sin(ju), j = 1..D, of the planted u (D = 4 and 16)"
+  },
+  "training": "Adam, lr {'amplitude': 0.05, 'angle': 0.05}, batch 32, 20 epochs, cross-entropy, fit split only; no early stopping; no test-dependent choice",
+  "hyperparameters": "5-fold stratified inner CV on the fit split, balanced accuracy, grids of the ladder pilot",
+  "predictions": {
+    "F2": [
+      {
+        "arm": "amp1_ceiling",
+        "kind": "learnable"
+      },
+      {
+        "arm": "amp2_ceiling",
+        "kind": "learnable"
+      },
+      {
+        "arm": "surrogate2",
+        "kind": "learnable"
+      },
+      {
+        "arm": "surrogate4",
+        "kind": "learnable"
+      }
+    ],
+    "F4": [
+      {
+        "contrast": "amp2_ceiling - amp1_ceiling",
+        "kind": "positive",
+        "grids": [
+          8
+        ]
+      },
+      {
+        "contrast": "surrogate4 - surrogate2",
+        "kind": "positive",
+        "grids": [
+          8
+        ]
+      },
+      {
+        "contrast": "(amp2_ceiling - amp1_ceiling) on F4 minus on F2",
+        "kind": "positive",
+        "grids": [
+          8
+        ]
+      }
+    ],
+    "K2": [
+      {
+        "arm": "angle_ceiling",
+        "kind": "learnable"
+      },
+      {
+        "arm": "fourier4",
+        "kind": "learnable"
+      },
+      {
+        "arm": "fourier16",
+        "kind": "learnable"
+      }
+    ],
+    "K4": [
+      {
+        "arm": "angle_ceiling",
+        "kind": "learnable"
+      },
+      {
+        "arm": "fourier4",
+        "kind": "learnable"
+      },
+      {
+        "arm": "fourier16",
+        "kind": "learnable"
+      }
+    ],
+    "K8": [
+      {
+        "arm": "angle",
+        "kind": "bounded",
+        "bound": 0.75
+      },
+      {
+        "arm": "angle_ceiling",
+        "kind": "bounded",
+        "bound": 0.75
+      },
+      {
+        "arm": "fourier4",
+        "kind": "bounded",
+        "bound": 0.75
+      },
+      {
+        "arm": "fourier16",
+        "kind": "learnable"
+      }
+    ],
+    "K16": [
+      {
+        "arm": "angle",
+        "kind": "bounded",
+        "bound": 0.625
+      },
+      {
+        "arm": "angle_ceiling",
+        "kind": "bounded",
+        "bound": 0.625
+      },
+      {
+        "arm": "fourier4",
+        "kind": "bounded",
+        "bound": 0.625
+      },
+      {
+        "arm": "fourier16",
+        "kind": "learnable"
+      }
+    ]
+  },
+  "exploratory": "PneumoniaMNIST 16-value cell for F4: reported without a verdict",
+  "design_power_check": "Synthetic design check before freezing, no real image involved: unit vectors from an anisotropic Gaussian with a shared mean, 3 draws, 300 test examples, analytic ceilings (x.x')^2 and (x.x')^4. Two-copy minus one-copy ceiling on F4: +0.28 at d=8 and n_fit=800, +0.08 at d=16 and n_fit=800, +0.16 at d=16 and n_fit=2000. On F2: -0.03 at d=8, -0.01 at d=16. The F4 predictions are therefore made for the 8-value grids only. The degree-4 feature space grows roughly as d^4, so at d=16 a null result would reflect sample size, not the function class.",
+  "verdicts": "learnable: CI above 1/2. bounded: CI lower end at or below the bound. positive: paired CI above 0. CIs: cluster bootstrap over seeds, then test examples, 2000 draws.",
+  "falsification": "A bounded arm whose CI lies above its bound means an extra frequency source or a leak. Fix under a new protocol version, never by editing this one.",
+  "data_sha256": {
+    "PneumoniaMNIST": "e1792d3f03751cb101e99f19a63b3c1941436c988665f47853417b05be250cd8",
+    "NoduleMNIST3D": "5dc6f82bdb2b91f300263522aab82f7c034d0b264692f6d5f4c70179ad27f76b"
+  },
+  "sources_sha256": {
+    "experiments/run_planted_labels_v2.py": "669ad8b1676259355276406bdbdec1874a8e6676bdec03e73a5145878fce077b",
+    "experiments/run_spatial_qsm.py": "c8c6eb705ec800094e78259ea7b6582226818923afbe356b7e8ec0dd16b3408c",
+    "experiments/run_ladder_pilot.py": "39d2d2d95e799590e4349c986fce35b343cdf4bddea88d7986b060a29466cfef",
+    "code/qnn.py": "0e8eb8582260d6f27fc8724412712878fd6087cbaf3be1e8563b77983cf72de5",
+    "code/spatial_compression.py": "46a6290c56306b8118f7d364538e1ec1bab6585ceef051d8092e84bda196d9ea",
+    "code/image_preprocessing.py": "590bc3255375910e0c9607e23bfa325ee56aa13f3b36b7506d4fa01cb0b79c20"
+  }
+}

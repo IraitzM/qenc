@@ -1,0 +1,14 @@
+{
+  "dataset": "MNIST1D",
+  "seed": 53,
+  "shape": [
+    40
+  ],
+  "n_train": 600,
+  "n_fit": 450,
+  "n_validation": 150,
+  "n_test": 160,
+  "train_sha256": "91245b605c4acd2e909e7518518ef301011261bda7d8b97a3025427087bf432f",
+  "test_sha256": "6448cfb40d07fc1c4586c6c32446e51f1d9e7b1f0e7e6fc2fe50ffa0823f03c7",
+  "protocol_sha256": "8319898d3b6ea529fffc09d5ef1acc1b4ec600c65fc6982e449a768966cff4bd"
+}

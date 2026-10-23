@@ -4,7 +4,7 @@ For each of the 95 saved models (signals from the five-task study, seeds 52-56; 
 and volumes from the spatial pilot, seeds 62-66) the initial model is rebuilt from its
 seed and the trained one loaded from its checkpoint. Before any probe, the regenerated
 data draw, splits and labels must be the saved ones, a saved initial checkpoint (spatial
-QSM, in the archive) must equal the rebuilt initialization, batched QSM must give the
+QSM, kept in results/) must equal the rebuilt initialization, batched QSM must give the
 features of the sequential circuit the signal models were trained with, and the trained
 readout must reproduce the saved validation and test predictions and the recorded test
 BA. The same standardized logistic regression (C = 1) is then fitted on the fitting split
@@ -93,7 +93,7 @@ def run(job):
     for spec in specs:
         key = spec["candidate"]
         initial = make_model(spec, seed)
-        if (source / f"{key}-initial.pt").exists():  # the archived spatial pilot saved its QSM initializations
+        if (source / f"{key}-initial.pt").exists():  # the original spatial pilot saved its QSM initializations
             saved = torch.load(source / f"{key}-initial.pt", weights_only=True)
             for param, value in initial.state_dict().items():
                 torch.testing.assert_close(value, saved[param], rtol=0, atol=0)

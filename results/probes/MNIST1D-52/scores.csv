@@ -1,0 +1,10 @@
+dataset,seed,candidate,family,stage,n_features,test_bacc,validation_bacc,end_to_end_bacc,parameters,n_qubits,source_bundle
+MNIST1D,52,angle,angle,initial,16,0.28125,0.2802275960170697,0.5062500000000001,164,8,results/geometry-selection
+MNIST1D,52,angle,angle,trained,16,0.45625,0.40629445234708395,0.5062500000000001,164,8,results/geometry-selection
+MNIST1D,52,angle,angle,input,8,0.44375,0.4052275960170697,0.5062500000000001,164,8,results/geometry-selection
+MNIST1D,52,amplitude,amplitude,initial,6,0.33125000000000004,0.31347795163584635,0.38125,82,6,results/geometry-selection
+MNIST1D,52,amplitude,amplitude,trained,6,0.39375,0.40718349928876246,0.38125,82,6,results/geometry-selection
+MNIST1D,52,amplitude,amplitude,input,40,0.4,0.3397937411095306,0.38125,82,6,results/geometry-selection
+MNIST1D,52,qsm,qsm,initial,6,0.3625,0.3474395448079659,0.65,628,6,results/geometry-selection
+MNIST1D,52,qsm,qsm,trained,6,0.68125,0.6344238975817923,0.65,628,6,results/geometry-selection
+MNIST1D,52,qsm,qsm,input,40,0.4,0.3397937411095306,0.65,628,6,results/geometry-selection

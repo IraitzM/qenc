@@ -1,0 +1,6 @@
+representation,seed,model,test_bacc
+spectral,45,QSM,0.725
+spectral,45,amplitude,0.7833333333333333
+spectral,45,angle (pooled),0.5
+spectral,45,RBF,0.675
+spectral,45,MLP,0.7749999999999999

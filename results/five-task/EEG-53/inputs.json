@@ -1,0 +1,14 @@
+{
+  "dataset": "EEG",
+  "seed": 53,
+  "shape": [
+    178
+  ],
+  "n_train": 400,
+  "n_fit": 300,
+  "n_validation": 100,
+  "n_test": 200,
+  "train_sha256": "4b7e64d67ccf2c1a21848e7ef57caa4a9a458e8c896841df310b664bb0daee65",
+  "test_sha256": "472f99a095f0f9363ec8c362a56e51cbaaa1e0c17598280365d4813bac335805",
+  "protocol_sha256": "8319898d3b6ea529fffc09d5ef1acc1b4ec600c65fc6982e449a768966cff4bd"
+}

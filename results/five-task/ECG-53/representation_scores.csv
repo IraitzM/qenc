@@ -1,0 +1,3 @@
+representation,n_features,cv_bacc,cv_fold_scores,gamma,test_bacc,selected
+pool8,8,0.9866666666666666,"[0.99, 0.98, 0.99]",1.9811164905763918,0.7224999999999999,True
+full,40,0.9866666666666666,"[0.99, 0.98, 0.99]",0.024999999999999994,0.755,False

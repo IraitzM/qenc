@@ -1,0 +1,15 @@
+{
+  "dataset": "PneumoniaMNIST",
+  "seed": 53,
+  "shape": [
+    28,
+    28
+  ],
+  "n_train": 600,
+  "n_fit": 450,
+  "n_validation": 150,
+  "n_test": 300,
+  "train_sha256": "617274d985f2e9a454f9e4f9ea86b7cefaa33e8e8746a9d8acb3c10dcd21e5cd",
+  "test_sha256": "3a5a66a6b27e1113312630e3a8a53c94ecaaec13ac2258f4512cdc743518c926",
+  "protocol_sha256": "8319898d3b6ea529fffc09d5ef1acc1b4ec600c65fc6982e449a768966cff4bd"
+}

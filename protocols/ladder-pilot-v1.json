@@ -1,0 +1,152 @@
+{
+  "protocol": "ladder-pilot-v1",
+  "status": "Exploratory retrospective pilot on saved models. Fixed before any ladder outcome; original end-to-end and probe outcomes were already known.",
+  "jobs": [
+    [
+      "ECG",
+      52
+    ],
+    [
+      "ECG",
+      53
+    ],
+    [
+      "ECG",
+      54
+    ],
+    [
+      "ECG",
+      55
+    ],
+    [
+      "ECG",
+      56
+    ],
+    [
+      "EEG",
+      52
+    ],
+    [
+      "EEG",
+      53
+    ],
+    [
+      "EEG",
+      54
+    ],
+    [
+      "EEG",
+      55
+    ],
+    [
+      "EEG",
+      56
+    ],
+    [
+      "MNIST1D",
+      52
+    ],
+    [
+      "MNIST1D",
+      53
+    ],
+    [
+      "MNIST1D",
+      54
+    ],
+    [
+      "MNIST1D",
+      55
+    ],
+    [
+      "MNIST1D",
+      56
+    ],
+    [
+      "PneumoniaMNIST",
+      62
+    ],
+    [
+      "PneumoniaMNIST",
+      63
+    ],
+    [
+      "PneumoniaMNIST",
+      64
+    ],
+    [
+      "PneumoniaMNIST",
+      65
+    ],
+    [
+      "PneumoniaMNIST",
+      66
+    ],
+    [
+      "NoduleMNIST3D",
+      62
+    ],
+    [
+      "NoduleMNIST3D",
+      63
+    ],
+    [
+      "NoduleMNIST3D",
+      64
+    ],
+    [
+      "NoduleMNIST3D",
+      65
+    ],
+    [
+      "NoduleMNIST3D",
+      66
+    ]
+  ],
+  "models": "All candidates of results/representation-bottlenecks/family-probes (95 models), reconstructed and verified by that bundle's frozen procedure",
+  "levels": {
+    "L0": "Best of RBF-SVM and logistic on the raw standardized input x",
+    "L1": "Same classical procedure on the coordinates supplied to the encoding",
+    "L2": "SVM with precomputed fidelity kernel |<psi(x)|psi(x')>|^2 of the final state, initial and trained",
+    "L3": "Logistic on all one- and two-local Pauli expectations of the final state, initial and trained",
+    "L4": "Logistic on the model's own readout features, initial and trained; end-to-end BA recorded",
+    "L5": "L4 procedure on readout features of 20 random initializations (seeds 10000+k)"
+  },
+  "fitting": "Fit partition only; StandardScaler inside the pipeline; hyperparameters by 5-fold stratified inner CV on balanced accuracy (grouped by recording for EEG); one test evaluation",
+  "grids": {
+    "logistic_C": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "svc_C": [
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0
+    ],
+    "rbf_gamma_times_scale": [
+      0.1,
+      1.0,
+      10.0
+    ]
+  },
+  "checks": [
+    "family-probes protocol validates",
+    "local-Z (and ZZ) from extracted states equal the model's own readout features",
+    "readout of trained model reproduces saved test predictions"
+  ],
+  "primary_descriptive": [
+    "Headroom realized by training: (L4_trained - mean L5) / (L2 - mean L5), L2 at trained parameters",
+    "Rank of the trained L4 probe among the L5 random draws",
+    "Readout gap L3_trained - L4_trained"
+  ],
+  "interpretation": "Descriptive pilot. Small fit sets (120 to 450) and overlapping draws; CIs from the later analysis step are conditional on these benchmarks.",
+  "inputs_sha256": {
+    "experiments\\run_ladder_pilot.py": "39d2d2d95e799590e4349c986fce35b343cdf4bddea88d7986b060a29466cfef",
+    "results\\representation-bottlenecks\\family-probes\\protocol.json": "d27bbd69b582350fd54b8b0944303973ad279fe2d0a700dd6d0c31ed4844ec55"
+  }
+}

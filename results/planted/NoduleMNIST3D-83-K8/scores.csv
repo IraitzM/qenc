@@ -1,0 +1,6 @@
+arm,test_bacc,val_bacc,cv_bacc,params,seconds,dataset,seed,label,job,class1_share
+angle,0.5164983164983165,0.4471153846153846,,,363.624748999,NoduleMNIST3D,83,K8,NoduleMNIST3D-83-K8,0.55
+angle_ceiling,0.4801346801346801,,0.5136888576340053,{'C': 1000.0},363.624748999,NoduleMNIST3D,83,K8,NoduleMNIST3D-83-K8,0.55
+classical,0.48383838383838385,,0.526062666041569,"{'svc__C': 1000.0, 'svc__gamma': np.float64(0.7217730692877025)}",0.0,NoduleMNIST3D,83,K8,NoduleMNIST3D-83-K8,0.55
+fourier4,0.5164983164983166,,0.5450496171276762,{'logisticregression__C': 0.01},0.0,NoduleMNIST3D,83,K8,NoduleMNIST3D-83-K8,0.55
+fourier16,0.996969696969697,,0.99125,{'logisticregression__C': 100.0},0.0,NoduleMNIST3D,83,K8,NoduleMNIST3D-83-K8,0.55

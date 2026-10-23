@@ -1,0 +1,14 @@
+{
+  "dataset": "ECG",
+  "seed": 55,
+  "shape": [
+    40
+  ],
+  "n_train": 600,
+  "n_fit": 450,
+  "n_validation": 150,
+  "n_test": 400,
+  "train_sha256": "fb6f7450811714f4cfaa91b90e47c216c028ebf2cb5d214662c48724eafa8e78",
+  "test_sha256": "6809fc8f7e7c27547f4267b4eca6749b7cf56106a0ecb9b5c967c85ca78fc451",
+  "protocol_sha256": "8319898d3b6ea529fffc09d5ef1acc1b4ec600c65fc6982e449a768966cff4bd"
+}

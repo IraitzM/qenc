@@ -1,0 +1,6 @@
+{
+  "status": "complete",
+  "smoke": false,
+  "quantum_fits": 4,
+  "classical_fits": 4
+}

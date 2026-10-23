@@ -1,0 +1,10 @@
+dataset,seed,candidate,family,stage,n_features,test_bacc,validation_bacc,end_to_end_bacc,parameters,n_qubits,source_bundle
+EEG,53,angle,angle,initial,16,0.63,0.63,0.73,130,8,results/geometry-selection
+EEG,53,angle,angle,trained,16,0.72,0.62,0.73,130,8,results/geometry-selection
+EEG,53,angle,angle,input,8,0.485,0.56,0.73,130,8,results/geometry-selection
+EEG,53,amplitude,amplitude,initial,8,0.5,0.44,0.76,90,8,results/geometry-selection
+EEG,53,amplitude,amplitude,trained,8,0.74,0.7,0.76,90,8,results/geometry-selection
+EEG,53,amplitude,amplitude,input,178,0.515,0.53,0.76,90,8,results/geometry-selection
+EEG,53,qsm,qsm,initial,8,0.595,0.5700000000000001,0.75,858,8,results/geometry-selection
+EEG,53,qsm,qsm,trained,8,0.79,0.7,0.75,858,8,results/geometry-selection
+EEG,53,qsm,qsm,input,178,0.515,0.53,0.75,858,8,results/geometry-selection

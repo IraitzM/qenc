@@ -1,7 +1,7 @@
 """The three encoding families as PennyLane classifiers, and the QSM upload unitaries.
 
 Each model has trainable ``weights`` followed by an affine ``readout``. Parameter
-names, shapes and initialization order match the archived checkpoints, so
+names, shapes and initialization order match the checkpoints in results/, so
 ``load_state_dict`` restores any saved model and ``torch.manual_seed`` before the
 constructor reproduces its initialization. Every model exposes ``features(x)``,
 the measured expectation values fed to the readout, and ``circuit_input(x)``,

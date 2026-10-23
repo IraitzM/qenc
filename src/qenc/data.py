@@ -1,8 +1,8 @@
 """Datasets and the data draws of every experiment.
 
 Archives are downloaded on first use into ``data/`` (set QENC_DATA to use another
-folder) and checked against their MD5 checksums. The draws reproduce the archived
-runs exactly: same seeds, same order of random calls, same per-sample normalization.
+folder) and checked against their MD5 checksums. The draws reproduce the
+article's runs exactly: same seeds, same order of random calls, same per-sample normalization.
 """
 from __future__ import annotations
 
@@ -56,7 +56,7 @@ def download(url: str, path: Path, md5: str | None = None, attempts: int = 3) ->
                 raise
     if md5 is not None and hashlib.md5(part.read_bytes()).hexdigest() != md5:
         part.unlink()
-        raise RuntimeError(f"{url} does not match the archived checksum {md5}")
+        raise RuntimeError(f"{url} does not match the expected checksum {md5}")
     part.rename(path)
     return path
 

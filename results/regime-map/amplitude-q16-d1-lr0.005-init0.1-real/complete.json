@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "protocol_sha256": "f0f2fd86772976f92f69eae455de614cf9f10ea1fabd7ff5477c77b1fda03695",
+  "seconds": 717.9191969980002,
+  "device": "cuda",
+  "gpu": "NVIDIA A10",
+  "python": "3.12.15",
+  "torch": "2.12.1+cu126",
+  "data_sha256": {
+    "28": "e1792d3f03751cb101e99f19a63b3c1941436c988665f47853417b05be250cd8",
+    "224": "2a6faaca43872b4bcf4154a79625631ab29683b41e265ab7936d0513351fe591"
+  }
+}

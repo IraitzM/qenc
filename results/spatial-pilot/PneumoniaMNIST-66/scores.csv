@@ -1,0 +1,10 @@
+candidate,kind,arm,grid,n_qubits,depth,lr,batch,epochs,val_bacc,parameters,fit_validation_seconds,test_bacc,selected,dataset,seed
+native8,qsm,native,"(2, 4)",4,4,0.005,32,20,0.7,190,2.571742371073924,0.7083333333333334,False,PneumoniaMNIST,66
+raster8,qsm,raster,"(2, 4)",4,4,0.005,32,20,0.75,190,1.6994605200598016,0.7166666666666667,False,PneumoniaMNIST,66
+spectrum8,qsm,spectrum,"(2, 4)",4,4,0.005,32,20,0.6333333333333333,190,1.7209848060738295,0.5249999999999999,False,PneumoniaMNIST,66
+amplitude8,amplitude,,"(2, 4)",3,3,0.05,32,20,0.6833333333333333,35,20.017161492956802,0.7083333333333333,False,PneumoniaMNIST,66
+native16,qsm,native,"(4, 4)",5,4,0.005,32,20,0.8333333333333334,252,1.9746854669647291,0.825,False,PneumoniaMNIST,66
+raster16,qsm,raster,"(4, 4)",5,4,0.005,32,20,0.8666666666666667,252,2.0265077949734405,0.8,False,PneumoniaMNIST,66
+spectrum16,qsm,spectrum,"(4, 4)",5,4,0.005,32,20,0.7,252,2.0222135910298675,0.7,False,PneumoniaMNIST,66
+amplitude16,amplitude,,"(4, 4)",4,3,0.05,32,20,0.8666666666666667,46,23.895751664065756,0.8416666666666667,True,PneumoniaMNIST,66
+angle8,angle,,"(2, 4)",8,4,0.05,32,20,0.8166666666666667,130,70.30498115497176,0.8,False,PneumoniaMNIST,66

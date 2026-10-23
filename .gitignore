@@ -1,5 +1,7 @@
 data/
-results/
+results/summary/
+results/figures/
+rerun/
 .venv/
 __pycache__/
 *.pyc

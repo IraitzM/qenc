@@ -1,0 +1,16 @@
+{
+  "dataset": "NoduleMNIST3D",
+  "seed": 55,
+  "shape": [
+    28,
+    28,
+    28
+  ],
+  "n_train": 300,
+  "n_fit": 225,
+  "n_validation": 75,
+  "n_test": 120,
+  "train_sha256": "9a353046ff0f2c0493fa2d4368c51b000b623b00e2918139e6d4d96dcf5f3773",
+  "test_sha256": "f5c7681767bd79e2724093f532d7d59659cd0da28f8ac3e13f8d8e49b4afb4af",
+  "protocol_sha256": "8319898d3b6ea529fffc09d5ef1acc1b4ec600c65fc6982e449a768966cff4bd"
+}

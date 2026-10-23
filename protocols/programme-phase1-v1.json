@@ -1,0 +1,245 @@
+{
+  "protocol": "programme-phase1-v1",
+  "status": "Prospective. Predictions fixed before any fit on real data.",
+  "data": {
+    "dataset": "PneumoniaMNIST (MedMNIST+ sizes 28, 64, 224)",
+    "draw_seed": 7,
+    "fit": 1000,
+    "val": 300,
+    "test": "full official test split (624)",
+    "sampling": "class-balanced fit and validation draws from the training split",
+    "preprocessing": "per-image z-score, then block means on the declared grid"
+  },
+  "geometry": {
+    "angle": {
+      "4": {
+        "size": 28,
+        "grid": [
+          2,
+          2
+        ]
+      },
+      "8": {
+        "size": 28,
+        "grid": [
+          2,
+          4
+        ]
+      },
+      "16": {
+        "size": 28,
+        "grid": [
+          4,
+          4
+        ]
+      }
+    },
+    "amplitude": {
+      "4": {
+        "size": 28,
+        "grid": [
+          4,
+          4
+        ]
+      },
+      "8": {
+        "size": 64,
+        "grid": [
+          16,
+          16
+        ]
+      },
+      "12": {
+        "size": 64,
+        "grid": [
+          64,
+          64
+        ]
+      },
+      "16": {
+        "size": 224,
+        "grid": [
+          224,
+          224
+        ]
+      }
+    },
+    "qsm": {
+      "4": {
+        "size": 28,
+        "grid": [
+          4,
+          4
+        ]
+      },
+      "6": {
+        "size": 64,
+        "grid": [
+          8,
+          8
+        ]
+      },
+      "8": {
+        "size": 64,
+        "grid": [
+          16,
+          16
+        ]
+      },
+      "10": {
+        "size": 64,
+        "grid": [
+          32,
+          32
+        ]
+      }
+    }
+  },
+  "arms": {
+    "core": {
+      "angle": {
+        "qubits": [
+          4,
+          8
+        ],
+        "depth": [
+          1,
+          2,
+          4,
+          8,
+          16
+        ]
+      },
+      "amplitude": {
+        "qubits": [
+          4,
+          8,
+          12
+        ],
+        "depth": [
+          1,
+          3,
+          9
+        ]
+      },
+      "qsm": {
+        "qubits": [
+          4,
+          6,
+          8,
+          10
+        ],
+        "depth": [
+          1,
+          2,
+          4,
+          8
+        ]
+      }
+    },
+    "scale": {
+      "angle": {
+        "qubits": [
+          16
+        ],
+        "depth": [
+          1,
+          4,
+          8
+        ]
+      },
+      "amplitude": {
+        "qubits": [
+          16
+        ],
+        "depth": [
+          1,
+          3
+        ]
+      }
+    }
+  },
+  "grid": {
+    "learning_rates": [
+      0.005,
+      0.05
+    ],
+    "init_scales": [
+      0.1,
+      1.0
+    ],
+    "tasks": [
+      "real",
+      "teacher"
+    ],
+    "seeds": {
+      "core": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "scale": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  "training": "Adam, batch 64, 100 epochs, no early stopping, cross-entropy; seeds vary initialization and minibatch order; one fixed data draw",
+  "readouts": "angle local Z and ring ZZ; amplitude and QSM local Z; linear head trained jointly",
+  "teacher": "same family and configuration, seed 10000, init scale 1.0, logit margin thresholded at its median on the fit split",
+  "measurements": {
+    "checkpoints": [
+      0,
+      5,
+      20,
+      100
+    ],
+    "probe": "first 256 test inputs; tangent kernel on the first 128",
+    "drift": "||K_t - K_0||_F / ||K_0||_F for tangent (quantum weights, feature outputs), fidelity and projected kernels; projected-kernel gamma = 1 / median squared distance at epoch 0",
+    "other": "KTA of each kernel, linear CKA of measured features against epoch 0, relative parameter displacement, BA on fit, validation and test",
+    "linearization": "core arm only: first-order model around initialization, trained on the same schedule; test BA and agreement with the trained model's test predictions"
+  },
+  "predictions": [
+    {
+      "id": "P1",
+      "kind": "identity",
+      "statement": "A single upload's fidelity kernel cannot move: the trainable unitary after the only upload cancels in every overlap. Relative fidelity-kernel drift below 1e-4 at every checkpoint of every amplitude run and of every angle or QSM run with one upload."
+    },
+    {
+      "id": "P2",
+      "kind": "sign test",
+      "statement": "At fixed depth, learning rate, initialization and task, the relative tangent-kernel drift at epoch 100 is lower at the largest qubit count than at the smallest (medians over seeds). Tested per family over all such cells, angle and amplitude including the 16-qubit scale arm: the share of cells where it holds exceeds 1/2, one-sided binomial p < 0.05."
+    },
+    {
+      "id": "P3",
+      "kind": "sign test",
+      "statement": "At matched qubits (4 and 8) and depth (2, 4 and 8 uploads; one upload is excluded by P1), QSM moves its fidelity kernel more than angle: paired by learning rate, initialization, task and seed, QSM drift exceeds angle drift in more than half of the pairs, one-sided binomial p < 0.05."
+    },
+    {
+      "id": "P4",
+      "kind": "correlation",
+      "statement": "Across core runs, the further the tangent kernel moves, the more the trained model departs from its linearization: Spearman correlation between tangent-kernel drift and prediction disagreement with the linearized model is positive, with a bootstrap interval over jobs above 0."
+    }
+  ],
+  "exploratory": [
+    "E1 learning rate and E2 initialization scale effects on drift",
+    "E3 depth trends of every drift",
+    "E4 teacher against real task",
+    "E5 whether richness pays: test BA of trained minus linearized model against drift"
+  ],
+  "outcome_wording": {
+    "P2 fails": "Lazy-regime theory does not describe these circuits at these sizes: say so, and report the trends.",
+    "P3 fails": "The pilot's KTA contrast between QSM and angle does not generalize to state geometry.",
+    "P4 fails": "Tangent-kernel drift is not a usable proxy for nonlinear training at these sizes."
+  },
+  "sources_sha256": {
+    "experiments/run_phase1.py": "f2b23cbeaf430082f2ed46b3d41a2bf74be3dae2a71f6bd2bfa795ae38b32760",
+    "qfe/sim.py": "77287bfd80a82aa8d2509a4636845e4bc361158009c65908798cf4318bb44f3d",
+    "qfe/models.py": "90446b2aaa9f190faaf0ec7010f167c6369d52acd59a3300898fd89e55f5c112",
+    "qfe/kernels.py": "2c365710f6782bd4ad83fc9b6a2b3dbcf74d09809f1aabf80d36ac80000ee07c",
+    "qfe/data.py": "7f39316efe54b1ecae4f1b5fd3a8e6ec09d4fb20ba4e394df9d0a39db6c768c4"
+  }
+}

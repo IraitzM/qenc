@@ -1,0 +1,6 @@
+seed,ba_test_trained,ba_test_linearized,agreement,job,arm,family,qubits,depth,lr,init,task
+0,0.971383810043335,0.9201939105987549,0.9375,angle-q4-d4-lr0.005-init1.0-teacher,core,angle,4,4,0.005,1.0,teacher
+1,0.9675958156585693,0.9372091889381409,0.9391025900840759,angle-q4-d4-lr0.005-init1.0-teacher,core,angle,4,4,0.005,1.0,teacher
+2,0.961028516292572,0.9019330739974976,0.9150640964508057,angle-q4-d4-lr0.005-init1.0-teacher,core,angle,4,4,0.005,1.0,teacher
+3,0.9552332162857056,0.929972767829895,0.942307710647583,angle-q4-d4-lr0.005-init1.0-teacher,core,angle,4,4,0.005,1.0,teacher
+4,0.963715136051178,0.9581565856933594,0.9551281929016113,angle-q4-d4-lr0.005-init1.0-teacher,core,angle,4,4,0.005,1.0,teacher

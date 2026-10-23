@@ -1,0 +1,6 @@
+representation,seed,model,test_bacc
+waveform,43,QSM,0.5
+waveform,43,amplitude,0.5166666666666667
+waveform,43,angle (pooled),0.5
+waveform,43,RBF,0.49166666666666664
+waveform,43,MLP,0.5083333333333333

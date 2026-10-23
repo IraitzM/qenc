@@ -1,0 +1,16 @@
+dataset,seed,candidate,family,stage,n_features,test_bacc,validation_bacc,end_to_end_bacc,parameters,n_qubits,source_bundle
+PneumoniaMNIST,62,native8,qsm,initial,4,0.6583333333333334,0.5666666666666667,0.7833333333333333,190,4,results/spatial-qsm
+PneumoniaMNIST,62,native8,qsm,trained,4,0.775,0.8500000000000001,0.7833333333333333,190,4,results/spatial-qsm
+PneumoniaMNIST,62,native8,qsm,input,8,0.8,0.85,0.7833333333333333,190,4,results/spatial-qsm
+PneumoniaMNIST,62,amplitude8,amplitude,initial,3,0.7416666666666667,0.7,0.7583333333333333,35,3,results/spatial-qsm
+PneumoniaMNIST,62,amplitude8,amplitude,trained,3,0.7666666666666666,0.8166666666666667,0.7583333333333333,35,3,results/spatial-qsm
+PneumoniaMNIST,62,amplitude8,amplitude,input,8,0.8,0.85,0.7583333333333333,35,3,results/spatial-qsm
+PneumoniaMNIST,62,native16,qsm,initial,5,0.775,0.8166666666666667,0.8333333333333333,252,5,results/spatial-qsm
+PneumoniaMNIST,62,native16,qsm,trained,5,0.8166666666666667,0.95,0.8333333333333333,252,5,results/spatial-qsm
+PneumoniaMNIST,62,native16,qsm,input,16,0.8,0.95,0.8333333333333333,252,5,results/spatial-qsm
+PneumoniaMNIST,62,amplitude16,amplitude,initial,4,0.7,0.6833333333333333,0.7833333333333333,46,4,results/spatial-qsm
+PneumoniaMNIST,62,amplitude16,amplitude,trained,4,0.7749999999999999,0.9166666666666667,0.7833333333333333,46,4,results/spatial-qsm
+PneumoniaMNIST,62,amplitude16,amplitude,input,16,0.8,0.95,0.7833333333333333,46,4,results/spatial-qsm
+PneumoniaMNIST,62,angle8,angle,initial,16,0.8166666666666667,0.8,0.7749999999999999,130,8,results/spatial-qsm
+PneumoniaMNIST,62,angle8,angle,trained,16,0.7333333333333334,0.8500000000000001,0.7749999999999999,130,8,results/spatial-qsm
+PneumoniaMNIST,62,angle8,angle,input,8,0.8,0.85,0.7749999999999999,130,8,results/spatial-qsm

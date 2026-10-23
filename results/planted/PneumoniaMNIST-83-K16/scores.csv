@@ -1,0 +1,6 @@
+arm,test_bacc,val_bacc,cv_bacc,params,seconds,dataset,seed,label,job,class1_share
+angle,0.5034722222222222,0.48879551820728295,,,365.5406206790001,PneumoniaMNIST,83,K16,PneumoniaMNIST-83-K16,0.48
+angle_ceiling,0.4751602564102564,,0.509416780692126,{'C': 0.1},365.5406206790001,PneumoniaMNIST,83,K16,PneumoniaMNIST-83-K16,0.48
+classical,0.45940170940170943,,0.5214491943554536,{'logisticregression__C': 10.0},0.0,PneumoniaMNIST,83,K16,PneumoniaMNIST-83-K16,0.48
+fourier4,0.46153846153846156,,0.5528502744194781,{'logisticregression__C': 0.01},0.0,PneumoniaMNIST,83,K16,PneumoniaMNIST-83-K16,0.48
+fourier16,0.9764957264957265,,0.9786097485627312,{'logisticregression__C': 10.0},0.0,PneumoniaMNIST,83,K16,PneumoniaMNIST-83-K16,0.48

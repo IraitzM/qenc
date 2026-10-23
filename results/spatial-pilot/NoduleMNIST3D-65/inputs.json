@@ -1,0 +1,13 @@
+{
+  "train_sha256": "2330369e2103b5010c590718517b406f7c0934c3e7b0aae78cfad18683218aee",
+  "test_sha256": "ab4d61efccc702765452b4986b724837d3cd86d1b0d399e92fae0331052ea0e9",
+  "source": "/home/iraitz/.medmnist/nodulemnist3d.npz",
+  "source_sha256": "5dc6f82bdb2b91f300263522aab82f7c034d0b264692f6d5f4c70179ad27f76b",
+  "shape": [
+    28,
+    28,
+    28
+  ],
+  "protocol_sha256": "128894d74e8634ee49d5a87e290ace97b59145ce261c973e9d3e32e9e617fe6a",
+  "collision": null
+}

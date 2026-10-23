@@ -1,0 +1,8 @@
+arm,test_bacc,val_bacc,cv_bacc,params,seconds,dataset,seed,label,job,class1_share
+amp1,0.870826259196378,0.864448051948052,,,111.03953237600001,PneumoniaMNIST,82,F2,PneumoniaMNIST-82-F2-g8,0.62
+amp1_ceiling,0.9636389360498019,,0.9800000000000001,{'C': 1000.0},111.03953237600001,PneumoniaMNIST,82,F2,PneumoniaMNIST-82-F2-g8,0.62
+amp2,0.9098754951895869,0.9277597402597402,,,269.6450494039999,PneumoniaMNIST,82,F2,PneumoniaMNIST-82-F2-g8,0.62
+amp2_ceiling,0.9528862478777589,,0.9637499999999999,{'C': 1000.0},269.6450494039999,PneumoniaMNIST,82,F2,PneumoniaMNIST-82-F2-g8,0.62
+classical,0.9367572156196944,,0.94625,"{'svc__C': 10.0, 'svc__gamma': np.float64(0.1)}",0.0,PneumoniaMNIST,82,F2,PneumoniaMNIST-82-F2-g8,0.62
+surrogate2,0.9724108658743633,,0.9850000000000001,{'logisticregression__C': 100.0},0.0,PneumoniaMNIST,82,F2,PneumoniaMNIST-82-F2-g8,0.62
+surrogate4,0.9528862478777589,,0.9675,{'logisticregression__C': 100.0},0.0,PneumoniaMNIST,82,F2,PneumoniaMNIST-82-F2-g8,0.62

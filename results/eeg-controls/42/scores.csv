@@ -1,0 +1,6 @@
+seed,split,features,model,test_bacc
+42,recording,z-scored window,RBF-SVM,0.685
+42,recording,z-scored window,QSM,0.745
+42,recording,raw window,RBF-SVM,0.875
+42,recording,log std,RBF-SVM,0.925
+42,random,z-scored window,QSM,0.75

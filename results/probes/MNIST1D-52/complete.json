@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "candidates": 3,
+  "protocol_sha256": "d27bbd69b582350fd54b8b0944303973ad279fe2d0a700dd6d0c31ed4844ec55",
+  "checks": [
+    "source hashes",
+    "input hashes",
+    "exact split and labels",
+    "saved validation and test predictions",
+    "recorded BA",
+    "saved initialization where available",
+    "QSM batched equivalence for signals"
+  ]
+}

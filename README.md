@@ -51,6 +51,8 @@ src/qenc/       the library
   fastsim/        batched torch statevector simulator used by the regime map
 experiments/    one script per result bundle, with the paper's settings fixed inside
 analysis/       tables.py (every table and number) and figures.py (the main-text figures)
+results/        the per-job results of the article, one folder per bundle
+protocols/      the frozen protocols of its experiments, named by the identifiers the SI cites
 ```
 
 Results go to `results/<bundle>/<job>/` (set `QENC_RESULTS` to change the folder), the
@@ -60,10 +62,20 @@ and its results are never overwritten, so an interrupted run resumes.
 
 ## Reproducing the paper
 
-Run the experiments in this order (the probes and the ladder analyze the models
-saved by the first two), then the analysis:
+`results/` already holds every job of the article, so the analysis rebuilds every table, quoted
+number and figure in a few minutes, without retraining:
 
 ```bash
+uv run analysis/tables.py
+uv run analysis/figures.py
+```
+
+To rerun the experiments themselves, point `QENC_RESULTS` at another folder (in `results/` every
+job is finished and would be skipped). Run them in this order, since the probes and the ladder
+analyze the models saved by the first two, then the analysis on the same folder:
+
+```bash
+export QENC_RESULTS=$PWD/rerun
 uv run experiments/five_task.py --all
 uv run experiments/spatial_pilot.py --all
 uv run experiments/volume_followup.py --all
@@ -83,7 +95,7 @@ uv run analysis/figures.py
 ```
 
 Jobs are independent, so `--job` lets you spread an experiment over several processes or
-machines.
+machines, and any job in `rerun/` can be compared file by file with the same job in `results/`.
 
 | Article | Experiment | Summary in `results/summary/` | Time per job on one core |
 |---|---|---|---|
@@ -101,33 +113,37 @@ machines.
 | SI S13 | `five_task.py`, `volume_followup.py` (5 jobs) | `validation_selection.csv`, `volume_followup.csv` | see above; 3 minutes |
 
 With the pinned library versions, reruns of sampled jobs of every experiment reproduced the
-archived scores and predictions exactly, on CPU and, for the regime map, on the same GPU model.
+scores and predictions in `results/` exactly, on CPU and, for the regime map, on the same GPU model.
 Floating-point differences between machines or thread counts can still flip an occasional
-prediction that sits on a decision boundary. The archived planted-label jobs ran on another
+prediction that sits on a decision boundary. The planted-label jobs in `results/` ran on another
 machine, and of three rerun on ours one matched exactly and two changed one validation and five
 test predictions, by at most 0.7 points of test BA.
 
-## Archived results
+## Results and protocols
 
-The per-seed results, predictions, model checkpoints and frozen protocols of the article are
-deposited separately [archive DOI]. Placed under `results/` with the names below, they let
-`probes.py`, `ladder.py` and the analysis run without retraining. `probes.py` first checks every
-saved model against its recorded data draw, splits and predictions, and against its saved
-initialization where the archive has one (spatial QSM). A folder's
-protocol sits in its `protocol.json`, and the SI cites it by the identifier below.
+`results/` (14 MB) holds, for every job of the article, the files these scripts write: scores,
+predictions, model checkpoints, splits and data-draw digests. Most bundles come from the original
+runs, renamed to this layout and without the files these scripts do not use. `eeg-controls/`,
+`hls/`, `checkerboard/` and `witnesses/` were run with this code, which reproduces the reported
+numbers. The spatial pilot also kept the initial checkpoints of its QSM models, and `probes.py`
+checks every saved model against its recorded data draw, splits, predictions and, where one was
+kept, initialization before probing it.
 
-| Archive folder | Frozen protocol | Here |
+`protocols/` holds the frozen protocols byte for byte, so the `protocol_sha256` recorded in the jobs
+still verifies. Besides the design and the predictions, a protocol lists the hashes of the
+development code that ran it, which is not part of this repository.
+
+| Protocol | Script | Results |
 |---|---|---|
-| `geometry-selection/<task>-<seed>` | `geometry-validation-v2` | `five-task/<task>-<seed>` |
-| `geometry-selection/volume-encoding/<seed>` | `volume-encoding-followup-v1` | `volume-followup/<seed>` |
-| `geometry-selection/{label,phase}_witness.csv` | | `witnesses/` |
-| `spatial-qsm/<task>-<seed>` | `spatial-qsm-v1` | `spatial-pilot/<task>-<seed>` |
-| `representation-bottlenecks/resolution/<task>-<seed>` | `representation-bottlenecks-resolution-v1` | `detail/<task>-<seed>` |
-| `representation-bottlenecks/family-probes/<task>-<seed>` | `retrospective-three-family-probes-v1` | `probes/<task>-<seed>` |
-| `representation-bottlenecks/ladder-pilot/<task>-<seed>` | `ladder-pilot-v1` | `ladder/<task>-<seed>` |
-| `representation-bottlenecks/planted-v2/<job>` | `planted-labels-v2` | `planted/<job>` |
-| `programme/phase1/<job>`, `programme/phase1-diagnostics/ntk_norm.csv` | `programme-phase1-v1` | `regime-map/<job>`, `regime-map/ntk_norm.csv` |
-| `qnn-rankdesign/table_init_sensitivity_final_crz.csv` | | `rank/fits.csv` |
+| `geometry-validation-v2` | `five_task.py` | `five-task/` |
+| `volume-encoding-followup-v1` | `volume_followup.py` | `volume-followup/` |
+| `witnesses` | `witnesses.py` | `witnesses/` |
+| `spatial-qsm-v1` | `spatial_pilot.py` | `spatial-pilot/` |
+| `representation-bottlenecks-resolution-v1` | `detail.py` | `detail/` |
+| `retrospective-three-family-probes-v1` | `probes.py` | `probes/` |
+| `ladder-pilot-v1` | `ladder.py` | `ladder/` |
+| `planted-labels-v2` | `planted.py` | `planted/` |
+| `programme-phase1-v1` | `regime_map.py` | `regime-map/` |
 
 ## Citation
 

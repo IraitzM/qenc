@@ -497,11 +497,11 @@ def controls():
              "eeg_controls")
         qsm = eeg[eeg.model == "QSM"].pivot(index="seed", columns="split", values="test_bacc")
         diff = qsm.recording - qsm.random
-        shared = np.mean([json.loads((f / "complete.json").read_text())["random_split_shared_recording"]
-                          for f in jobs("eeg-controls")])
+        shared = [json.loads((f / "complete.json").read_text())["random_split_shared_recording"]
+                  for f in jobs("eeg-controls")]
         print(f"EEG: QSM recording minus random split {diff.mean():+.3f} "
-              f"+- {diff.std(ddof=1) / np.sqrt(len(diff)):.3f} (SE); "
-              f"random split shares a recording for {100 * shared:.0f}% of test windows")
+              f"+- {diff.std(ddof=1) / np.sqrt(len(diff)):.3f} (SE); random split shares a recording for "
+              f"{100 * min(shared):.0f} to {100 * max(shared):.0f}% (mean {100 * np.mean(shared):.0f}%) of test windows")
     hls = concat("hls", "scores.csv")
     if hls is not None:
         save(hls.groupby(["representation", "model"]).test_bacc.agg(["mean", "std", "count"]).reset_index(), "hls")

@@ -1,0 +1,6 @@
+seed,ba_test_trained,ba_test_linearized,agreement,job,arm,family,qubits,depth,lr,init,task
+0,0.5,0.838476300239563,0.49358975887298584,qsm-q10-d1-lr0.05-init1.0-teacher,core,qsm,10,1,0.05,1.0,teacher
+1,0.5,0.512635350227356,0.9887820482254028,qsm-q10-d1-lr0.05-init1.0-teacher,core,qsm,10,1,0.05,1.0,teacher
+2,0.5,0.5036101341247559,0.9967948794364929,qsm-q10-d1-lr0.05-init1.0-teacher,core,qsm,10,1,0.05,1.0,teacher
+3,0.5,0.5100864768028259,0.011217948980629444,qsm-q10-d1-lr0.05-init1.0-teacher,core,qsm,10,1,0.05,1.0,teacher
+4,0.5,0.6945245265960693,0.7836538553237915,qsm-q10-d1-lr0.05-init1.0-teacher,core,qsm,10,1,0.05,1.0,teacher

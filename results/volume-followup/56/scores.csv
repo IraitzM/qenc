@@ -1,0 +1,4 @@
+candidate,kind,spatial_grid,grid,n_qubits,depth,epochs,lr,batch,features,val_bacc,fit_validation_seconds,test_bacc,selected,seed
+angle8,angle,"(2, 2, 2)","(8,)",8,4,10,0.05,32,8,0.6098862019914651,37.71830750996014,0.5583333333333333,False,56
+amplitude8,amplitude,"(2, 2, 2)",,3,3,10,0.05,32,8,0.5960170697012802,11.187244306027424,0.5416666666666667,False,56
+amplitude64,amplitude,"(4, 4, 4)",,6,3,10,0.05,32,64,0.7083926031294452,18.028360124968458,0.6833333333333333,True,56

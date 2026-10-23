@@ -26,7 +26,7 @@ def write_json(path: Path, value) -> None:
 
 
 def digest(a: np.ndarray) -> str:
-    """SHA-256 of an array's bytes, used to check that a data draw reproduces the archived one."""
+    """SHA-256 of an array's bytes, used to check that a data draw reproduces the saved one."""
     return hashlib.sha256(np.ascontiguousarray(a).tobytes()).hexdigest()
 
 

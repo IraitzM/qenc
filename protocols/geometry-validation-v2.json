@@ -1,0 +1,87 @@
+{
+  "protocol": "geometry-validation-v2",
+  "seeds": [
+    52,
+    53,
+    54,
+    55,
+    56
+  ],
+  "datasets": [
+    "ECG",
+    "MNIST1D",
+    "EEG",
+    "PneumoniaMNIST",
+    "NoduleMNIST3D"
+  ],
+  "quantum_selection": "max validation balanced accuracy; exact ties by qubits, depth, name",
+  "quantum_holdout": 0.25,
+  "refit": false,
+  "angle": {
+    "qubits": 8,
+    "uploads": 4,
+    "epochs": 10,
+    "lr": 0.05,
+    "batch": 32
+  },
+  "amplitude": {
+    "layers": 3,
+    "epochs": 10,
+    "lr": 0.05,
+    "batch": 32,
+    "max_qubits": 10
+  },
+  "qsm": {
+    "uploads": 8,
+    "epochs": 20,
+    "lr": 0.005,
+    "batch": 16,
+    "time": 0.1,
+    "max_dimension": 256,
+    "native_dimensions": 1
+  },
+  "resolutions": {
+    "PneumoniaMNIST": [
+      [
+        2,
+        4
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "NoduleMNIST3D": [
+      [
+        2,
+        2,
+        2
+      ],
+      [
+        4,
+        4,
+        4
+      ]
+    ]
+  },
+  "classical_probe": "3 outer x 3 inner stratified folds, scaling inside each fit; RBF C=1, 11 gamma values",
+  "representation_selection": "max nested CV on training only; exact ties prefer fewer features",
+  "quantum_screening": "No pruning by unlabeled reconstruction loss or by classical probe scores",
+  "eeg_split": "disjoint recordings across fit, validation, test; CV probes group recordings too",
+  "normalization": "per-sample z-score for four quantum tasks; original [0,1] volumes for 3D controls",
+  "limitation": "Revised on known benchmarks; test labels excluded from selection, not an independent dataset-transfer study",
+  "torch_version": "2.12.1+cu130",
+  "numpy_version": "2.4.6",
+  "source_sha256": {
+    "experiments/run_geometry_selection.py": "7bbebd79bd5971233c160d66bb5a86f1db93f3fb8774d075e595b2d417d6dbec",
+    "code/spatial_compression.py": "46a6290c56306b8118f7d364538e1ec1bab6585ceef051d8092e84bda196d9ea",
+    "code/encoding_selection.py": "641023661689e3e120031553160744629d17001641891c2c7aeb442cdc6f827a",
+    "code/qnn.py": "0e8eb8582260d6f27fc8724412712878fd6087cbaf3be1e8563b77983cf72de5",
+    "code/datasets.py": "3c57aa0fadc05d8043c8610e8c698879bdadeeb150e1386f294e6fe2bee3b5fc",
+    "experiments/run_encoding_selection.py": "bec3fe93da2778484164b1354c10415f0495e525c1606a10d34243cf91d5b38e"
+  }
+}

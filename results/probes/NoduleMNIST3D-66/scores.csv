@@ -1,0 +1,16 @@
+dataset,seed,candidate,family,stage,n_features,test_bacc,validation_bacc,end_to_end_bacc,parameters,n_qubits,source_bundle
+NoduleMNIST3D,66,native8,qsm,initial,4,0.5916666666666667,0.5666666666666667,0.575,190,4,results/spatial-qsm
+NoduleMNIST3D,66,native8,qsm,trained,4,0.5666666666666667,0.5833333333333333,0.575,190,4,results/spatial-qsm
+NoduleMNIST3D,66,native8,qsm,input,8,0.55,0.5166666666666666,0.575,190,4,results/spatial-qsm
+NoduleMNIST3D,66,amplitude8,amplitude,initial,3,0.5416666666666667,0.3666666666666667,0.4916666666666667,35,3,results/spatial-qsm
+NoduleMNIST3D,66,amplitude8,amplitude,trained,3,0.475,0.5666666666666667,0.4916666666666667,35,3,results/spatial-qsm
+NoduleMNIST3D,66,amplitude8,amplitude,input,8,0.55,0.5166666666666666,0.4916666666666667,35,3,results/spatial-qsm
+NoduleMNIST3D,66,native64,qsm,initial,7,0.6083333333333334,0.5833333333333333,0.6916666666666667,376,7,results/spatial-qsm
+NoduleMNIST3D,66,native64,qsm,trained,7,0.7,0.6333333333333333,0.6916666666666667,376,7,results/spatial-qsm
+NoduleMNIST3D,66,native64,qsm,input,64,0.65,0.6,0.6916666666666667,376,7,results/spatial-qsm
+NoduleMNIST3D,66,amplitude64,amplitude,initial,6,0.5583333333333333,0.5833333333333333,0.6416666666666666,68,6,results/spatial-qsm
+NoduleMNIST3D,66,amplitude64,amplitude,trained,6,0.6166666666666667,0.6833333333333333,0.6416666666666666,68,6,results/spatial-qsm
+NoduleMNIST3D,66,amplitude64,amplitude,input,64,0.65,0.6,0.6416666666666666,68,6,results/spatial-qsm
+NoduleMNIST3D,66,angle8,angle,initial,16,0.5833333333333334,0.6499999999999999,0.5916666666666667,130,8,results/spatial-qsm
+NoduleMNIST3D,66,angle8,angle,trained,16,0.5916666666666667,0.6166666666666667,0.5916666666666667,130,8,results/spatial-qsm
+NoduleMNIST3D,66,angle8,angle,input,8,0.55,0.5166666666666666,0.5916666666666667,130,8,results/spatial-qsm

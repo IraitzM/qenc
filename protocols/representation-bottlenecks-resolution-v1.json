@@ -1,0 +1,47 @@
+{
+  "protocol": "representation-bottlenecks-resolution-v1",
+  "datasets": [
+    "PneumoniaMNIST",
+    "NoduleMNIST3D"
+  ],
+  "seeds": [
+    62,
+    63,
+    64,
+    65,
+    66
+  ],
+  "splits": "Reuse spatial-pilot draws: 180 fit / 60 validation / 120 test, balanced official subsets.",
+  "intervention": "F is 4x4 or 4x4x4 pooled standardized input; PF averages F to 2x4 or 2x2x2 and repeats it onto F.",
+  "families": {
+    "qsm": {
+      "register": "fine native geometry; 4 uploads; native window; local-Z readout",
+      "epochs": 20,
+      "lr": 0.005,
+      "batch": 32
+    },
+    "amplitude": {
+      "register": "fine feature dimension",
+      "layers": 3,
+      "epochs": 20,
+      "lr": 0.05,
+      "batch": 32
+    }
+  },
+  "pairing": "Within family/dataset/seed, F and PF copy initial weights and use the same deterministic minibatch order.",
+  "classical": "Logistic C=1 and RBF SVC C=1; StandardScaler fit on fitting data only; RBF gamma grid logspace(-3,3)/features selected on validation.",
+  "primary": "paired test balanced accuracy BA(F) - BA(PF), reported separately by dataset and family.",
+  "feature_probe": "QSM local-Z at initialization and after fitting; standardized C=1 logistic fit on fitting data only.",
+  "stopping_rule": "Exactly 20 epochs; no test-dependent candidate, schedule, or threshold changes.",
+  "source_sha256": {
+    "experiments/run_fixed_capacity_resolution.py": "d4909ef75f3cbba490f38e7a26da88a28782ed286491ba4c1b844a5257bb1fab",
+    "code/qnn.py": "0e8eb8582260d6f27fc8724412712878fd6087cbaf3be1e8563b77983cf72de5",
+    "code/spatial_compression.py": "46a6290c56306b8118f7d364538e1ec1bab6585ceef051d8092e84bda196d9ea",
+    "code/spatial_qsm.py": "6c86a0425fd7ac4aff7cc94fe7557d8e14ca6ad82352cceb1c0f538059bd75ff",
+    "experiments/run_spatial_qsm.py": "c8c6eb705ec800094e78259ea7b6582226818923afbe356b7e8ec0dd16b3408c"
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "torch": "2.12.1+cu130"
+  }
+}

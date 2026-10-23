@@ -1,0 +1,45 @@
+{
+  "selected": "qsm",
+  "common_selected": "qsm",
+  "legacy_selected": "qsm",
+  "validation": [
+    {
+      "candidate": "angle",
+      "kind": "angle",
+      "grid": [
+        8
+      ],
+      "n_qubits": 8,
+      "depth": 4,
+      "epochs": 10,
+      "lr": 0.05,
+      "batch": 32,
+      "val_bacc": 0.6,
+      "fit_validation_seconds": 55.90028093504952
+    },
+    {
+      "candidate": "amplitude",
+      "kind": "amplitude",
+      "grid": null,
+      "n_qubits": 8,
+      "depth": 3,
+      "epochs": 10,
+      "lr": 0.05,
+      "batch": 32,
+      "val_bacc": 0.6799999999999999,
+      "fit_validation_seconds": 32.9795486049843
+    },
+    {
+      "candidate": "qsm",
+      "kind": "qsm",
+      "grid": null,
+      "n_qubits": 8,
+      "depth": 8,
+      "epochs": 20,
+      "lr": 0.005,
+      "batch": 16,
+      "val_bacc": 0.7,
+      "fit_validation_seconds": 272.9559876740095
+    }
+  ]
+}

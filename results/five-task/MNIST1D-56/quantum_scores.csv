@@ -1,0 +1,4 @@
+candidate,kind,grid,n_qubits,depth,epochs,lr,batch,val_bacc,fit_validation_seconds,test_bacc,selected,common_selected,legacy_selected
+angle,angle,"(8,)",8,4,10,0.05,32,0.4192745376955903,81.70164063101402,0.41874999999999996,False,False,False
+amplitude,amplitude,,6,3,10,0.05,32,0.3730440967283073,40.775678170030005,0.44375,False,False,False
+qsm,qsm,,6,8,20,0.005,16,0.5928165007112376,276.2749123959802,0.6499999999999999,True,True,True

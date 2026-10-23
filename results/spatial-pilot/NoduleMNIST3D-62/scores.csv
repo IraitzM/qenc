@@ -1,0 +1,10 @@
+candidate,kind,arm,grid,n_qubits,depth,lr,batch,epochs,val_bacc,parameters,fit_validation_seconds,test_bacc,selected,dataset,seed
+native8,qsm,native,"(2, 2, 2)",4,4,0.005,32,20,0.55,190,2.2908698830287904,0.6166666666666667,False,NoduleMNIST3D,62
+raster8,qsm,raster,"(2, 2, 2)",4,4,0.005,32,20,0.5333333333333333,190,1.4735138489631936,0.5916666666666667,False,NoduleMNIST3D,62
+spectrum8,qsm,spectrum,"(2, 2, 2)",4,4,0.005,32,20,0.5,190,1.4734493660507724,0.5,False,NoduleMNIST3D,62
+amplitude8,amplitude,,"(2, 2, 2)",3,3,0.05,32,20,0.5666666666666667,35,18.5965428709751,0.55,False,NoduleMNIST3D,62
+native64,qsm,native,"(4, 4, 4)",7,4,0.005,32,20,0.75,376,4.896783816977404,0.6833333333333333,True,NoduleMNIST3D,62
+raster64,qsm,raster,"(4, 4, 4)",7,4,0.005,32,20,0.6666666666666666,376,4.768870710046031,0.6416666666666666,False,NoduleMNIST3D,62
+spectrum64,qsm,spectrum,"(4, 4, 4)",7,4,0.005,32,20,0.6666666666666666,376,4.4403097400208935,0.6083333333333334,False,NoduleMNIST3D,62
+amplitude64,amplitude,,"(4, 4, 4)",6,3,0.05,32,20,0.5,68,30.632721666013822,0.575,False,NoduleMNIST3D,62
+angle8,angle,,"(2, 2, 2)",8,4,0.05,32,20,0.5166666666666666,130,76.75116792903282,0.6333333333333333,False,NoduleMNIST3D,62

@@ -5,7 +5,7 @@ description = "Reproduction code for 'How Quantum Data Encoding Constrains Repre
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12,<3.14"
-# The versions that produced the archived results.
+# The versions that produced the results in results/.
 dependencies = [
     "matplotlib==3.11.0",
     "numpy==2.4.6",

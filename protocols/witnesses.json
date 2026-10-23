@@ -1,0 +1,14 @@
+{
+  "source_sha256": "e12c1c87f06b003faa7526908f363d0ef117dfa495ba65d32e5ac4e6e83961cb",
+  "construction": "x = u c + 2 v h; c in row(A), h in ker(A); labels sign(u) or sign(v)",
+  "model": "StandardScaler + LogisticRegression(C=1); fixed, no test tuning",
+  "n_train": 320,
+  "n_test": 320,
+  "seeds": [
+    52,
+    53,
+    54,
+    55,
+    56
+  ]
+}

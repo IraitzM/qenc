@@ -1,0 +1,49 @@
+{
+  "selected": "amplitude",
+  "common_selected": "amplitude",
+  "legacy_selected": "amplitude",
+  "validation": [
+    {
+      "candidate": "angle",
+      "kind": "angle",
+      "grid": [
+        2,
+        4
+      ],
+      "n_qubits": 8,
+      "depth": 4,
+      "epochs": 10,
+      "lr": 0.05,
+      "batch": 32,
+      "val_bacc": 0.8200000000000001,
+      "fit_validation_seconds": 82.50594313204056
+    },
+    {
+      "candidate": "angle4x2",
+      "kind": "angle",
+      "grid": [
+        4,
+        2
+      ],
+      "n_qubits": 8,
+      "depth": 4,
+      "epochs": 10,
+      "lr": 0.05,
+      "batch": 32,
+      "val_bacc": 0.7933333333333333,
+      "fit_validation_seconds": 81.6813533870154
+    },
+    {
+      "candidate": "amplitude",
+      "kind": "amplitude",
+      "grid": null,
+      "n_qubits": 10,
+      "depth": 3,
+      "epochs": 10,
+      "lr": 0.05,
+      "batch": 32,
+      "val_bacc": 0.9066666666666667,
+      "fit_validation_seconds": 69.03228949796176
+    }
+  ]
+}

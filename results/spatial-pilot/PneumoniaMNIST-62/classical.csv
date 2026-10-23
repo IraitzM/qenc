@@ -1,0 +1,5 @@
+candidate,kind,grid,gamma,val_bacc,test_bacc,dataset,seed
+grid8,grid,"(2, 4)",0.031398580393869745,0.8666666666666667,0.85,PneumoniaMNIST,62
+spectrum8,spectrum,"(2, 4)",0.0005,0.5333333333333333,0.45,PneumoniaMNIST,62
+grid16,grid,"(4, 4)",0.003943483403001206,0.9333333333333333,0.8666666666666667,PneumoniaMNIST,62
+spectrum16,spectrum,"(4, 4)",0.003962232981152784,0.8166666666666667,0.75,PneumoniaMNIST,62

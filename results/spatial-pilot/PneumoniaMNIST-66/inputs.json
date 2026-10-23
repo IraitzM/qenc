@@ -1,0 +1,12 @@
+{
+  "train_sha256": "67a208b2f0a1fb93e0d1fe774ced983dc519d5beebe1be7fdc462a7a6974dc7b",
+  "test_sha256": "adbea6c98e19d9781c2924331f47fff8e3830c20fbf6efed60a62c3507c30690",
+  "source": "/home/iraitz/.medmnist/pneumoniamnist.npz",
+  "source_sha256": "e1792d3f03751cb101e99f19a63b3c1941436c988665f47853417b05be250cd8",
+  "shape": [
+    28,
+    28
+  ],
+  "protocol_sha256": "128894d74e8634ee49d5a87e290ace97b59145ce261c973e9d3e32e9e617fe6a",
+  "collision": null
+}
