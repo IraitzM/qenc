@@ -14,6 +14,8 @@ Arms: one and two amplitude copies (F) or Angle-8 (K), trained for 20 epochs, th
 the fidelity kernel of each trained final state (its ceiling), and classical references
 (F: best of logistic/RBF on x and logistic on degree-2 and degree-4 monomials; K: best of
 logistic/RBF on the eight coordinates and logistic on Fourier features of u of degree 4 and 16).
+Every amplitude model is checked against its states: the explicit two-copy states give the
+circuit's own readout, and the ceiling kernel of k copies is (x.x')^(2k).
 
     uv run experiments/planted.py --list | --job PneumoniaMNIST-80-F4-g8 | --all
 """
@@ -121,13 +123,27 @@ def two_copy_states(model, z):
     return product @ v.T
 
 
+def local_z(psi, n):
+    """<Z_i> of statevectors whose first wire is the most significant bit."""
+    probs = np.abs(psi.reshape(len(psi), *([2] * n))) ** 2
+    return np.stack([probs.take(0, axis=i + 1).sum(axis=tuple(range(1, n)))
+                     - probs.take(1, axis=i + 1).sum(axis=tuple(range(1, n))) for i in range(n)], axis=1)
+
+
 def quantum_arm(arm, d, seed, x, y, yv, yt, cv):
     model = train(build(arm, d, seed), x["fit"], y, seed)
     pred_val, pred_test = predict(model, x["val"]), predict(model, x["test"])
     if arm == "amp2":
         s_fit, s_test = two_copy_states(model, x["fit"].numpy()), two_copy_states(model, x["test"].numpy())
+        with torch.no_grad():
+            own = model.features(x["fit"][:16]).numpy()
+        np.testing.assert_allclose(local_z(s_fit[:16], model.n_qubits), own, atol=1e-6)
     else:
         s_fit, s_test = states(model, x["fit"]), states(model, x["test"])
+    if arm != "angle":  # k amplitude copies have the ceiling kernel (x.x')^(2k), whatever the trained unitary
+        u = unit(x["fit"][:32].numpy())
+        exact = (u @ u.T) ** (4 if arm == "amp2" else 2)
+        np.testing.assert_allclose(fidelity(s_fit[:32], s_fit[:32]), exact, atol=1e-8)
     ceiling = fit_kernel(fidelity(s_fit, s_fit), fidelity(s_test, s_fit), y, yt, cv)
     rows = [dict(arm=arm, test_bacc=balanced_accuracy_score(yt, pred_test),
                  val_bacc=balanced_accuracy_score(yv, pred_val), cv_bacc=np.nan, params=""),

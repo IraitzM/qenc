@@ -89,7 +89,7 @@ machines.
 |---|---|---|---|
 | Fig. 1 | `analysis/figures.py` (schematic) | `results/figures/fig_pipeline.pdf` | seconds |
 | Fig. 2, SI S4 | `ladder.py` (25 jobs) | `ladder_gaps.csv`, `ladder_levels.csv`, `tex/ladder_table.tex` | about 10 minutes |
-| Sec. 3.1, SI S5 | `witnesses.py` | `witness_phase.csv`, `witness_label_rule.csv` | seconds |
+| Sec. 3.1, SI S2, S5 | `witnesses.py` | `witness_phase.csv`, `witness_label_rule.csv` (S2: `results/witnesses/single_copy.json`) | seconds |
 | Sec. 3.1, SI S6 | `five_task.py` (25 jobs) | `five_task_pooling_screen.csv` (G_A) | 5 to 30 minutes |
 | Fig. 3a, SI S7 | `detail.py` (10 jobs) | `detail_contrasts.csv` | about 1 minute |
 | Sec. 3.1, SI S8 | `eeg_controls.py` (5 jobs), `hls.py` (10 jobs) | `eeg_controls.csv`, `hls.csv` | about 12 and 5 minutes |
@@ -103,26 +103,31 @@ machines.
 With the pinned library versions, reruns of sampled jobs of every experiment reproduced the
 archived scores and predictions exactly, on CPU and, for the regime map, on the same GPU model.
 Floating-point differences between machines or thread counts can still flip an occasional
-prediction that sits on a decision boundary.
+prediction that sits on a decision boundary. The archived planted-label jobs ran on another
+machine, and of three rerun on ours one matched exactly and two changed one validation and five
+test predictions, by at most 0.7 points of test BA.
 
 ## Archived results
 
-The per-seed results, predictions and model checkpoints of the article are deposited
-separately [archive DOI]. Placed under `results/` with the names below, they let
-`probes.py`, `ladder.py` and the analysis run without retraining.
+The per-seed results, predictions, model checkpoints and frozen protocols of the article are
+deposited separately [archive DOI]. Placed under `results/` with the names below, they let
+`probes.py`, `ladder.py` and the analysis run without retraining. `probes.py` first checks every
+saved model against its recorded data draw, splits and predictions, and against its saved
+initialization where the archive has one (spatial QSM). A folder's
+protocol sits in its `protocol.json`, and the SI cites it by the identifier below.
 
-| Archive folder | Here |
-|---|---|
-| `geometry-selection/<task>-<seed>` | `five-task/<task>-<seed>` |
-| `geometry-selection/volume-encoding/<seed>` | `volume-followup/<seed>` |
-| `geometry-selection/{label,phase}_witness.csv` | `witnesses/` |
-| `spatial-qsm/<task>-<seed>` | `spatial-pilot/<task>-<seed>` |
-| `representation-bottlenecks/resolution/<task>-<seed>` | `detail/<task>-<seed>` |
-| `representation-bottlenecks/family-probes/<task>-<seed>` | `probes/<task>-<seed>` |
-| `representation-bottlenecks/ladder-pilot/<task>-<seed>` | `ladder/<task>-<seed>` |
-| `representation-bottlenecks/planted-v2/<job>` | `planted/<job>` |
-| `programme/phase1/<job>`, `programme/phase1-diagnostics/ntk_norm.csv` | `regime-map/<job>`, `regime-map/ntk_norm.csv` |
-| `qnn-rankdesign/table_init_sensitivity_final_crz.csv` | `rank/fits.csv` |
+| Archive folder | Frozen protocol | Here |
+|---|---|---|
+| `geometry-selection/<task>-<seed>` | `geometry-validation-v2` | `five-task/<task>-<seed>` |
+| `geometry-selection/volume-encoding/<seed>` | `volume-encoding-followup-v1` | `volume-followup/<seed>` |
+| `geometry-selection/{label,phase}_witness.csv` | | `witnesses/` |
+| `spatial-qsm/<task>-<seed>` | `spatial-qsm-v1` | `spatial-pilot/<task>-<seed>` |
+| `representation-bottlenecks/resolution/<task>-<seed>` | `representation-bottlenecks-resolution-v1` | `detail/<task>-<seed>` |
+| `representation-bottlenecks/family-probes/<task>-<seed>` | `retrospective-three-family-probes-v1` | `probes/<task>-<seed>` |
+| `representation-bottlenecks/ladder-pilot/<task>-<seed>` | `ladder-pilot-v1` | `ladder/<task>-<seed>` |
+| `representation-bottlenecks/planted-v2/<job>` | `planted-labels-v2` | `planted/<job>` |
+| `programme/phase1/<job>`, `programme/phase1-diagnostics/ntk_norm.csv` | `programme-phase1-v1` | `regime-map/<job>`, `regime-map/ntk_norm.csv` |
+| `qnn-rankdesign/table_init_sensitivity_final_crz.csv` | | `rank/fits.csv` |
 
 ## Citation
 

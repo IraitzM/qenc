@@ -8,8 +8,9 @@ five seeds (three at 16 qubits). At epochs 0, 5, 20 and 100 it records, on the f
 test images, the relative drift ||K_t - K_0||_F / ||K_0||_F of the fidelity, projected
 and tangent kernels (the tangent kernel on the first 128), their KTA, the CKA of the
 features and the balanced accuracies. Core jobs (up to 12 qubits) also train the
-first-order linearization around initialization. The QSM jobs at 10 qubits and the
-16-qubit jobs need a GPU with about 24 GB or a large host memory.
+first-order linearization around initialization. Every job writes its device and
+software versions to complete.json. The QSM jobs at 10 qubits and the 16-qubit jobs
+need a GPU with about 24 GB or a large host memory.
 
 ``--ntk-norm`` runs the post hoc diagnostic of the initial tangent-kernel size.
 
@@ -18,13 +19,15 @@ first-order linearization around initialization. The QSM jobs at 10 qubits and t
 from __future__ import annotations
 
 import copy
+import platform
 import sys
+import time
 
 import pandas as pd
 import torch
 
 from qenc.fastsim import data, kernels, models, sim
-from qenc.utils import bundle, cli
+from qenc.utils import bundle, cli, write_json
 
 OUT = bundle("regime-map")
 DRAW_SEED, N_FIT, N_VAL = 7, 1000, 300
@@ -169,7 +172,7 @@ def run(job):
     if (folder / "metrics.csv").exists():
         return
     folder.mkdir(exist_ok=True)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    start, device = time.monotonic(), torch.device("cuda" if torch.cuda.is_available() else "cpu")
     torch.set_num_threads(2)
     family, n, depth, lr, init, task = parse(job)
     arm = ARM_OF[job]
@@ -205,6 +208,9 @@ def run(job):
     if lin_rows:
         pd.DataFrame(lin_rows).assign(**config).to_csv(folder / "linearized.csv", index=False)
     pd.DataFrame(rows).assign(**config).to_csv(folder / "metrics.csv", index=False)
+    write_json(folder / "complete.json", dict(status="complete", seconds=time.monotonic() - start, device=device.type,
+                                              gpu=torch.cuda.get_device_name() if device.type == "cuda" else None,
+                                              python=platform.python_version(), torch=torch.__version__))
 
 
 NTK_CELLS = {"angle": [(4, (1, 4, 8)), (8, (1, 4, 8)), (16, (1, 4, 8))],
